@@ -58,12 +58,12 @@
 
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <h2>Chart</h2>
                 <canvas id="pieChart" width="400" height="400"></canvas>
             </div>
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-md-8">
                 <h2>Filtered Data</h2>
                 <table class="table">
                     <thead>
@@ -85,7 +85,6 @@
                         {% endfor %}
                     </tbody>
                 </table>
-            </div>
         </div>
     </div>
 
@@ -101,25 +100,29 @@
                     label: 'Score Distribution',
                     data: [{% for score, data in counts.items() %}{{ data.percentage }},{% endfor %}],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(255, 206, 86, 0.6)',
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(153, 102, 255, 0.6)',
-                        'rgba(255, 159, 64, 0.6)'
+                        'rgba(79, 205, 100, 0.6)',
+                        'rgba(109, 73, 157, 0.6)',
+                        'rgba(111, 206, 225, 0.6)',
+                        'rgba(224, 48, 35, 0.6)'
                     ]
                 }]
             },
             options: {
                 responsive: true,
                 plugins: {
-                    labels: {
-                        render: 'percentage',
-                        precision: 2,
-                        fontColor: '#fff',
-                        fontSize: 16,
-                        fontStyle: 'bold',
-                        fontFamily: 'Arial'
+                    legend: {
+                        position: 'top', // Adjust as needed
+                    },
+                    datalabels: {
+                        formatter: function(value, context) {
+                            return context.dataset.data[context.dataIndex] + '%';
+                        },
+                        color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 16,
+                            family: 'Arial'
+                        }
                     }
                 }
             }

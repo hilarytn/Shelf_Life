@@ -37,8 +37,8 @@ def parse_and_process_excel(file_path):
         # Parse Excel file and select specific columns
         df = pd.read_excel(file_path, sheet_name=1, header=None, usecols=column_indices)
 
-        # print("Original DataFrame:")
-        # print(df)
+        print("Original DataFrame:")
+        print(df)
         
         # Convert DataFrame to dictionary
         df_dict = df.iloc[1:].to_dict(orient='records')
@@ -49,10 +49,7 @@ def parse_and_process_excel(file_path):
         # print(df_dict_with_keys)  # Print DataFrame dictionary with keys
 
         filtered_dict = [entry for entry in df_dict_with_keys if entry['Date'].year == 2023]
-        print("Filtered dictionary:")
-        for entry in filtered_dict:
-            print(entry)
-
+        print(filtered_dict)
 
         return filtered_dict
     except Exception as e:
@@ -80,7 +77,7 @@ def upload_file():
             # Parse and process the uploaded Excel file
             result = parse_and_process_excel(file_path)
             counts = get_score_counts(result)
-            #print(counts)
+            print(counts)
             # Delete the uploaded file after processing
             os.remove(file_path)
             return render_template('dashboard.html', data=result, counts=counts)
