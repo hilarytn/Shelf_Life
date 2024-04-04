@@ -17,6 +17,7 @@ def get_score_counts(filtered_dict):
     # Iterate through each entry in the filtered dictionary
     for entry in filtered_dict:
         # Increment the counter based on the 'Final Score' value
+        print(entry)
         score_counts[entry['Final Score']] += 1
 
     # Calculate total number of samples
@@ -49,9 +50,9 @@ def parse_and_process_excel(file_path):
         # print(df_dict_with_keys)  # Print DataFrame dictionary with keys
 
         filtered_dict = [entry for entry in df_dict_with_keys if entry['Date'].year == 2023]
-        print("Filtered dictionary:")
-        for entry in filtered_dict:
-            print(entry)
+        # print("Filtered dictionary:")
+        # for entry in filtered_dict:
+        #     print(entry)
 
 
         return filtered_dict
