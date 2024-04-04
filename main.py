@@ -17,7 +17,7 @@ def get_score_counts(filtered_dict):
     # Iterate through each entry in the filtered dictionary
     for entry in filtered_dict:
         # Increment the counter based on the 'Final Score' value
-        print(entry)
+        #print(entry)
         score_counts[entry['Final Score']] += 1
 
     # Calculate total number of samples
